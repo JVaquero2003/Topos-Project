@@ -1,0 +1,44 @@
+<aura:component controller="generarRandom">
+    <!--<aura:attribute name="numero" type="Integer" />
+    <aura:attribute name="numero2" type="Integer" />-->
+    <aura:attribute name="listaNumeros" type="Integer[]"/>
+    <aura:attribute name="numIntento" type="Integer"/>
+    <aura:attribute name="sumar" type="Boolean"/>
+    <aura:attribute name="score" type="Integer" default="0"/>
+    <aura:attribute name="highscore" type="Integer" default="0"/>
+    <aura:attribute name="ultimoNumeroGenerado" type="Integer" default="0"/>
+    <aura:attribute name="ultimoNumeroGenerado2" type="Integer" default="0"/>
+    <aura:attribute name="ultimoNumeroGenerado3" type="Integer" default="0"/>
+    <aura:attribute name="options" type="List" default="[{'label': 'Facil', 'value': '3'}, {'label': 'Medio', 'value': '2'}, {'label': 'Dificil', 'value': '1'}]" />
+    <aura:attribute name="selectedOption" type="String" />
+
+    <aura:handler event="c:reloadApexMethod" action="{!c.callApex}"/>
+    <aura:handler event="c:almacenarIntentos" action="{!c.aumentarContador}"/>
+        <table>
+            <tr>
+                <td> <c:casilla aura:id="1" /> </td>
+                <td> <c:casilla aura:id="2" /> </td>
+                <td> <c:casilla aura:id="3" /> </td>
+                <td> <c:casilla aura:id="4" /> </td>
+            </tr>
+            <tr>
+                <td> <c:casilla aura:id="5" /> </td>
+                <td> <c:casilla aura:id="6" /> </td>
+                <td> <c:casilla aura:id="7" /> </td>
+                <td> <c:casilla aura:id="8" /> </td>
+            </tr>
+        </table>
+    <br/>
+    <span>Tu ultima puntuacion ha sido {!v.highscore}</span>
+    <br/>
+
+    <lightning:select label="Selecciona un nivel" name="selectOption" value="{!v.selectedOption}">
+        <aura:iteration items="{!v.options}" var="option">
+            <option value="{!option.value}">{!option.label}</option>
+        </aura:iteration>
+    </lightning:select>
+
+    <lightning:button class="btn" label="Play" onclick="{!c.botonPlay}" />
+    <lightning:button class="btn" label="Stop" onclick="{!c.stopGame}" />
+    <br/>
+</aura:component>	

@@ -1,0 +1,9 @@
+<aura:component>
+    <aura:attribute name="componentTablero" type="Aura.component"></aura:attribute>
+    <aura:attribute name="clase" type="string" />
+    <aura:attribute name="numIntento" type="Integer" default="0"/>
+
+    <input class="{!v.clase}" type="button" onclick="{!c.jugada}"/>
+
+    <aura:method name="funcionCasilla" action="{!c.recibirClic}"></aura:method>
+</aura:component>	
